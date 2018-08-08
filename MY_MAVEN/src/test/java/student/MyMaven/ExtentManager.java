@@ -10,20 +10,23 @@ public class ExtentManager {
 	private static ExtentTest test;
 	private static String filepath="./Report/html.Report.html";
 	public static ExtentReports GetExtent() {
-		if (extent!=null) {
+		if (extent != null)
 			return extent;
-			extent=new ExportReports();
-			extent.attachReporter(get Html Reporter());
-			return extent;
+		extent = new ExtentReports();
+		extent.attachReporter(getHtmlReporter());
+		return extent;
 		}
-		public static ExtentHtmlReporter() {
-			htmlReporter=new ExtentHtmlReporter(filepath);
-			htmlReporter.config().setChartVisibilityOnOpen(true);
-			htmlReporter.config().setDocumentTitle("Simple extent report");
-			htmlReporter.config().setReportName("Google test");
-			return htmlReporter;
-		}
-		public static ExtentTest createTest(String)
+	public static ExtentHtmlReporter getHtmlReporter() {
+		htmlReporter = new ExtentHtmlReporter(filepath);
+		htmlReporter.config().setChartVisibilityOnOpen(true);
+		htmlReporter.config().setDocumentTitle("Simple Extent Report");
+		htmlReporter.config().setReportName("Google Test");
+		return htmlReporter;
+	}
+		public static ExtentTest createTest(String name,String description) {
+			test=extent.createTest(name,description);
+			return test;
+			
 	}
 
 }
